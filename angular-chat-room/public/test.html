@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="chatApp">
+  <head>
+    <title>The Iron Yard Test Runner</title>
+    <link href="index.css" rel="stylesheet" />
+
+  </head>
+  <body>
+  	<div class="chat-container">
+  		<div class="header-container">
+  			Chatter Box
+  		</div>
+<!-- Message Box -->
+  		<div class="message-box" ng-controller="messageController">
+
+  			<div class="singleMessage" ng-repeat="message in messages">
+  				
+  				<span class="msgUser">{{message.user_id }} at {{ message.timestamp }}:</span>
+
+  				<span class="msgText" ng-bind="message.text"></span>
+  			</div>
+  		</div>
+
+<!-- User Box -->
+  		<div class="user-box" ng-controller="userController">
+
+  		<!-- Create New User Fields -->	
+  			<input type="text" class="newUserName" placeholder="New User Name" ng-model="userName"/>
+
+  			<input type="text" class="newFullName" placeholder="Full Name" ng-model="fullName"/>
+
+  			<select name="status" ng-model="status" class="selectStatus" selected>
+  				<option value="active" >Active</option>
+  				<option value="busy">Busy</option>
+  				<option value="inactive">Inactive</option>
+  			</select>
+
+  			<button class="createUser" ng-click="createButton()">Create User</button>
+
+  		<!-- Show Users -->	
+  			<div class="allUsers-container">
+	  			<div class="allUsers" ng-repeat="user in users">
+	  				
+	  				<div class="userStatus" ng-class="user.status"></div>	
+	  				<span class="userName" ng-bind="user.username"></span>
+	  				<span class="userFullName" ng-bind="user.fullname"></span>
+	  			</div>
+	  		</div>
+  		</div>
+
+<!-- Input Box -->
+  		<div class="input-box" ng-controller="inputController">
+  			
+  			<input type="text" class="textBox" placeholder="Your message here..." ng-model="message"/>
+
+  			<div class="selectSubmit">
+	  			<select name="userlist" ng-model="user_id" class="selectName">	
+	  				<option ng-repeat="user in users" ng-value="user._id" selected>{{user.username}}</option>
+	  			</select>
+
+	  			<button class="submit" ng-click="submitButton()">Submit</button>
+	  		</div>
+
+  		</div>
+
+  	</div>
+
+
+  	<script src="libs/underscore.js"></script>
+  	<script src="libs/moment.js"></script>
+  	<script src="libs/angular.js"></script>
+    <script src="index.js"></script>
+
+  </body>
+</html>
