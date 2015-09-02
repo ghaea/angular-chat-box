@@ -46,6 +46,8 @@ var app = angular.module("chatApp", [])
 				.success(function() {
 					console.log('new user created')
 					getUser()
+					$scope.userName = ""
+					$scope.fullName = ""
 				})
 		}
 		// Gets user list
@@ -76,5 +78,6 @@ var app = angular.module("chatApp", [])
 					$scope.message = ""
 				})
 		}
+
 	})
 
